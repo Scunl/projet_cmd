@@ -170,6 +170,10 @@ def set_webhook():
     result = bot.set_webhook(url=url)
     return f"Webhook set: {result}"
 
+@app.route('/')
+def home():
+    return 'Bot is running!'
+
 @app.route(f'/{BOT_TOKEN}', methods=['POST'])
 def webhook():
     if request.headers.get('content-type') == 'application/json':
@@ -182,3 +186,4 @@ def webhook():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080)) 
     app.run(host='0.0.0.0', port=port)
+
